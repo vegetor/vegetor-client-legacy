@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import tw from 'twin.macro'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import 'tailwindcss/dist/base.css'
 
-export default App;
+import IndexPage from './containers/IndexPage'
+import Header from "./components/Header";
+
+const Container = tw.main``
+
+const App: React.FC = () => (
+  <Container role="main">
+    <Header authorized={ false } />
+    <Router>
+      <Switch>
+        <Route exact path="/" component={ IndexPage } />
+      </Switch>
+    </Router>
+  </Container>
+)
+
+export default App
