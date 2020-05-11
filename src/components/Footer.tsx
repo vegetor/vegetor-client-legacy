@@ -8,7 +8,7 @@ import { Theme } from './Theme'
 type Props = {}
 
 const StyledFooter = styled.footer<{ bgColor: string; color: string; }>`
-  ${ tw`p-4 border-t` };
+  ${ tw`p-4 border-t-2` };
   height: 180px;
   color: ${({ color }) => `${ color }`};
   background-color: ${({ bgColor }) => `${ bgColor }`};
@@ -24,12 +24,21 @@ const ContentWrapper = styled.div`
   font-size: 12px;
 `
 
-const Nav = styled.nav`
-  ${ tw`w-7/12` };
+const Nav = styled.nav<{ divColor: string; }>`
+  ${ tw`w-7/12 h-6` };
   ul {
-    ${ tw`flex justify-between` };
+    ${ tw`flex items-center h-full` };
     li {
-      white-space: nowrap;
+      ${ tw`whitespace-no-wrap` };
+      border-right: 1px solid ${({ divColor }) => `${ divColor }`};
+      padding: 0 6px;
+      &:first-child {
+        padding: 0 6px 0 0;
+      }
+      &:last-child {
+        border-right: 0;
+        padding: 0 0 0 6px;
+      }
     }
   }
 `
@@ -41,7 +50,7 @@ const Footer: React.FC<Props> = () => {
     <StyledFooter bgColor={ theme.colors.gray?.[200] } color={ theme.colors.gray?.[800] }>
       <ContentWrapper>
         <Logo>VEGETOR</Logo>
-        <Nav>
+        <Nav divColor={ theme.colors.gray?.[500] }>
           <ul>
             <li>
               헬프 데스크

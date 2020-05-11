@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled/macro'
 import tw from 'twin.macro'
 
-import { Card, EventBanner } from '../components'
+import {Card, EventBanner, Footer, Header} from '../components'
 
 const StyledEventBanner = styled(EventBanner)`
   ${ tw`w-screen h-full` }
@@ -14,6 +14,7 @@ const Section = styled.section`
 
 const IndexPage: React.FC = () => (
   <React.Fragment>
+    <Header authorized={ false } />
     <StyledEventBanner
       bgUrl="https://lh3.googleusercontent.com/proxy/CyoDGcJzR1NzhagSI_AyHJF05IeFQExTHMotmcuUvTLU89P7gmtFysL0W-rrNozpW5jvAqcjPWCy6K6RvwXAGAdxFiQuenOlVOA1GsXdFG_YNJLD4vGc60Bkyobwi5wuncM3w5Hp1HtstPFJHMOa912p2fgyAJBdLfE"
       title="행사를 개최하세요."
@@ -41,6 +42,7 @@ const IndexPage: React.FC = () => (
         location="홍대입구"
         date="2020-05-10" />
     </Section>
+    <Footer />
   </React.Fragment>
 )
 
