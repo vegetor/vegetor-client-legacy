@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from '@emotion/styled/macro'
+import tw from 'twin.macro'
 
 type Props = {
+  id: number;
   liked: boolean;
   imageUrl: string;
   date: string;
@@ -10,25 +12,69 @@ type Props = {
 }
 
 const Container = styled.article`
-  width: 100%;
-  height: 100%;
+  ${ tw`w-full h-full relative` };
   border-radius: 8px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
   background-color: #ffffff;
+  font-family: NotoSansCJKkr;
 `
 
-const Card: React.FC<Props> = ({ liked, imageUrl, date, title, location}) => (
-  <Container>
-    <img src={ imageUrl } alt="카드 이미지" />
-    <div>
-      <div>
-        <small>{ date }</small>
-        <h1>{ title }</h1>
-        <p>{ location }</p>
-      </div>
-    </div>
-    <img src="" alt="좋아요" />
-  </Container>
-)
+const ThumbnailImg = styled.img`
+  ${ tw`w-full h-64` };
+  border-radius: 8px 8px 0 0;
+`
+
+const ContentWrapper = styled.div`
+  ${ tw`w-full h-auto p-2` };
+`
+
+const Content = styled.div`
+  ${ tw`w-full h-auto` };
+`
+
+const Date = styled.small`
+  font-size: 12px;
+  line-height: 1.5;
+  color: #1bcd78;
+`
+
+const Title = styled.h1`
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.87);
+`
+
+const Location = styled.p`
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+`
+
+const LikeImg = styled.img`
+  ${ tw`absolute` };
+  top: 8px;
+  right: 8px;
+`
+
+const Card: React.FC<Props> = ({ id, liked, imageUrl, date, title, location}) => {
+  return (
+    <a href={ `/event/${ id }` } rel="noreferrer noopener">
+      <Container>
+        <ThumbnailImg src={ imageUrl } alt="카드 이미지" />
+        <ContentWrapper>
+          <Content>
+            <Date>{ date }</Date>
+            <Title>{ title }</Title>
+            <Location>{ location }</Location>
+          </Content>
+        </ContentWrapper>
+        <LikeImg src="" alt="좋아요" />
+      </Container>
+    </a>
+  )
+}
 
 export default Card

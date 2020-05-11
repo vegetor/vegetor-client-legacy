@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from '@emotion/styled/macro'
 import tw from 'twin.macro'
+import { useHistory } from 'react-router-dom'
 
-import Button from '../components/Button'
+import { Button } from '../components'
 
 type Props = {
   bgUrl: string;
@@ -17,9 +18,10 @@ const Container = styled.div<{ bgUrl: string; }>`
 `
 
 const Title = styled.h2`
-  ${ tw`absolute` };
+  ${ tw`absolute w-10/12` };
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   white-space: nowrap;
   font-family: BMJUAOTF;
@@ -29,17 +31,21 @@ const Title = styled.h2`
 `
 
 const StyledButton = styled(Button)`
-  ${ tw`absolute` };
+  ${ tw`absolute w-10/12` };
   left: 50%;
   transform: translateX(-50%);
   bottom: 16px;
 `
 
-const EventBanner: React.FC<Props> = ({ bgUrl, title }) => (
-  <Container bgUrl={ bgUrl }>
-    <Title>{ title }</Title>
-    <StyledButton primary onClick={() => {}}>이벤트 주최하기</StyledButton>
-  </Container>
-)
+const EventBanner: React.FC<Props> = ({ bgUrl, title }) => {
+  const history = useHistory()
+
+  return (
+    <Container bgUrl={ bgUrl }>
+      <Title>{ title }</Title>
+      <StyledButton primary onClick={() => history.push('/event') }>이벤트 주최하기</StyledButton>
+    </Container>
+  )
+}
 
 export default EventBanner

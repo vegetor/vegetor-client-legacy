@@ -2,8 +2,10 @@ import React from 'react'
 import tw from 'twin.macro'
 import styled from '@emotion/styled/macro'
 import { css } from '@emotion/core'
+import { Theme } from './Theme'
 
 type Props = {
+  theme?: Theme;
   primary?: boolean;
   secondary?: boolean;
   warning?: boolean;
@@ -16,7 +18,7 @@ type Props = {
   onClick: (e: React.MouseEvent) => void
 }
 
-const StyledButton = styled.button<Props>(({ primary, secondary, warning, danger, sm, md, lg }) => [
+const StyledButton = styled.button<Props>(({ theme, primary, secondary, warning, danger, sm, md, lg }) => [
   css`
     border-radius: 4px;
     font-family: NotoSansCJKkr;
@@ -27,7 +29,7 @@ const StyledButton = styled.button<Props>(({ primary, secondary, warning, danger
     ${ tw`text-lg px-8 py-2 rounded transform hocus:scale-105 transition-transform duration-75 focus:outline-none` }
   `,
   primary && css`
-    background-color: #1bcd78;
+    background-color: ${ theme.colors.green?.[600] };
     color: #ffffff;
   `,
   secondary && tw``,
@@ -38,7 +40,7 @@ const StyledButton = styled.button<Props>(({ primary, secondary, warning, danger
   lg && tw``
 ])
 
-const Button: React.FC<Props> = ({ children, onClick, ...rest }) => (
+const Button: React.FC<Props> = ({ children, onClick, theme, ...rest }) => (
   <StyledButton onClick={ onClick } { ...rest }>
     { children }
   </StyledButton>
