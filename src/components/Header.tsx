@@ -2,7 +2,11 @@ import React from 'react'
 import styled from '@emotion/styled/macro'
 import tw from 'twin.macro'
 
+import { useDrawer } from '../hooks'
+
 import HamburgerBtn from '../assets/images/ic-drawer.svg'
+import Drawer from "./Drawer";
+import Dimmed from "./Dimmed";
 
 type Props = {
   authorized: boolean;
@@ -39,9 +43,15 @@ const LoginButton = styled.a`
 `
 
 const Header: React.FC<Props> = ({ authorized, userThumbnailImage }) => {
+  const [visible, open, close ] = useDrawer()
+
   return (
     <Container>
-      <img src={ HamburgerBtn } alt="drawer" />
+      <img src={ HamburgerBtn } alt="drawer" onClick={ open } />
+      {
+        visible && <Drawer target={ document.getElementById('drawer') } close={ close } />
+      }
+      <Dimmed target={ document.getElementById('dim') } active={ visible } />
       <a href="/" rel="noreferrer noopener">
         <Title>VEGETOR</Title>
       </a>

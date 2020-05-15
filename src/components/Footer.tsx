@@ -28,11 +28,11 @@ const Nav = styled.nav<{ divColor: string; }>`
   ${ tw`w-7/12 h-6` };
   ul {
     ${ tw`flex items-center h-full` };
-    li {
+    > li {
       ${ tw`whitespace-no-wrap` };
       border-right: 1px solid ${({ divColor }) => `${ divColor }`};
       padding: 0 6px;
-      &:first-child {
+      &:first-of-type {
         padding: 0 6px 0 0;
       }
       &:last-child {
@@ -63,14 +63,16 @@ const Footer: React.FC<Props> = () => {
             </li>
           </ul>
         </Nav>
-        <div>
-          <p>
-            이메일: tlsehdfl@naver.com
-          </p>
-          <p>
-            대표 전화: 010-9204-5680
-          </p>
-        </div>
+        <dl>
+          <dt>
+            이메일:
+          </dt>
+          <dd>tlsehdfl@naver.com</dd>
+          <dt>
+            대표 전화:
+          </dt>
+          <dd>010-9204-5680</dd>
+        </dl>
       </ContentWrapper>
     </StyledFooter>
   )
