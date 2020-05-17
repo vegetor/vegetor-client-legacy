@@ -4,15 +4,17 @@ const useDrawer = () => {
   const [visible, setVisible] = useState(false)
 
   const open = useCallback(() => {
+    setVisible(true)
+
     const [body] = Array.from(document.getElementsByTagName('body'))
     body.classList.toggle('dimmed')
-    setVisible(true)
   }, [])
 
   const close = useCallback(() => {
+    setVisible(false)
+
     const [body] = Array.from(document.getElementsByTagName('body'))
     body.classList.toggle('dimmed')
-    setVisible(false)
   }, [])
 
   return [visible, open, close] as [typeof visible, typeof open, typeof close]

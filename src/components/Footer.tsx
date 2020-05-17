@@ -43,6 +43,18 @@ const Nav = styled.nav<{ divColor: string; }>`
   }
 `
 
+const Info = styled.dl`
+  dd {
+    font-weight: bold;
+  }
+  dd + dt {
+    ${ tw`mt-1` };
+  }
+  dt + dd {
+    ${ tw`mt-2` };
+  }
+`
+
 const Footer: React.FC<Props> = () => {
   const theme: Theme = useTheme()
 
@@ -53,26 +65,36 @@ const Footer: React.FC<Props> = () => {
         <Nav divColor={ theme.colors.gray?.[500] }>
           <ul>
             <li>
-              헬프 데스크
+              <a href="/helpdesk" rel="noreferrer noopener">
+                헬프 데스크
+              </a>
             </li>
             <li>
-              이용약관
+              <a href="/" rel="noreferrer noopener">
+                이용약관
+              </a>
             </li>
             <li>
-              개인정보보호정
+              <a href="/" rel="noreferrer noopener">
+                개인정보보호정책
+              </a>
             </li>
           </ul>
         </Nav>
-        <dl>
-          <dt>
+        <Info>
+          <dd>
             이메일:
-          </dt>
-          <dd>tlsehdfl@naver.com</dd>
+          </dd>
           <dt>
-            대표 전화:
+            <a href="mailto:tlsehdfl@naver.com" rel="noreferrer noopener">
+              tlsehdfl@naver.com
+            </a>
           </dt>
-          <dd>010-9204-5680</dd>
-        </dl>
+          <dd>
+            대표 전화:
+          </dd>
+          <dt>010-9204-5680</dt>
+        </Info>
       </ContentWrapper>
     </StyledFooter>
   )

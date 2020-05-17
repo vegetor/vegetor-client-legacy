@@ -1,4 +1,7 @@
-export { default as EventOrganizePage } from './EventOrganizePage'
+export { default as EventOrganizeHostPage } from './EventOrganizeHostPage'
+export { default as EventOrganizeDetailPage } from './EventOrganizeDetailPage'
+export { default as RecipeListPage } from './RecipeListPage'
+export { default as RecipeViewPage } from './RecipeViewPage'
 export { default as EventViewPage } from './EventViewPage'
 export { default as IndexPage } from './IndexPage'
 export { default as LoginPage } from './LoginPage'

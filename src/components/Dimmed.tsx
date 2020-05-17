@@ -6,6 +6,7 @@ import tw from 'twin.macro'
 type Props = {
   target: Element | null;
   active: boolean;
+  close: () => void;
 }
 
 const Container = styled.div<{ active: boolean; }>`
@@ -14,8 +15,8 @@ const Container = styled.div<{ active: boolean; }>`
   top: 0;
   display: ${({ active }) => active ? 'block' : 'none' };
 `
-const Dimmed: React.FC<Props> = ({ active, target  }) => (
-  target && ReactDOM.createPortal(<Container active={ active } />, target)
+const Dimmed: React.FC<Props> = ({ active, target, close  }) => (
+  target && ReactDOM.createPortal(<Container active={ active } onClick={ close } />, target)
 )
 
 export default Dimmed

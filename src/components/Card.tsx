@@ -6,9 +6,11 @@ type Props = {
   id: number;
   liked: boolean;
   imageUrl: string;
-  date: string;
+  startDate: string;
+  endDate: string;
   title: string;
   location: string;
+  owner: string;
 }
 
 const Container = styled.article`
@@ -47,10 +49,21 @@ const Title = styled.h1`
 `
 
 const Location = styled.p`
-  margin-top: 8px;
+  margin-top: 4px;
   font-size: 12px;
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.6);
+`
+
+const Owner = styled.p`
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.8);
+  &::before {
+    content: '@ ';
+  }
 `
 
 const LikeImg = styled.img`
@@ -59,16 +72,17 @@ const LikeImg = styled.img`
   right: 8px;
 `
 
-const Card: React.FC<Props> = ({ id, liked, imageUrl, date, title, location}) => {
+const Card: React.FC<Props> = ({ id, liked, imageUrl, startDate, endDate, title, location, owner}) => {
   return (
     <a href={ `/event/${ id }` } rel="noreferrer noopener">
       <Container>
         <ThumbnailImg src={ imageUrl } alt="카드 이미지" />
         <ContentWrapper>
           <Content>
-            <Date>{ date }</Date>
+            <Date>{ [startDate, endDate].join('~') }</Date>
             <Title>{ title }</Title>
             <Location>{ location }</Location>
+            <Owner>{ owner }</Owner>
           </Content>
         </ContentWrapper>
         <LikeImg src="" alt="좋아요" />

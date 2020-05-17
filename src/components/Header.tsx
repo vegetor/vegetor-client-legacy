@@ -7,6 +7,7 @@ import { useDrawer } from '../hooks'
 import HamburgerBtn from '../assets/images/ic-drawer.svg'
 import Drawer from "./Drawer";
 import Dimmed from "./Dimmed";
+import {Transition} from "react-transition-group";
 
 type Props = {
   authorized: boolean;
@@ -20,6 +21,7 @@ const Container = styled.header`
   background-color: rgba(0, 0, 0, 0.3);
   justify-content: space-between;
   padding: 0 19px;
+  z-index: 10;
 `
 
 const Title = styled.h1`
@@ -49,9 +51,13 @@ const Header: React.FC<Props> = ({ authorized, userThumbnailImage }) => {
     <Container>
       <img src={ HamburgerBtn } alt="drawer" onClick={ open } />
       {
-        visible && <Drawer target={ document.getElementById('drawer') } close={ close } />
+        visible && (
+          <Transition in={ visible } timeout={ 0 }>
+            {(status) => <Drawer visible={ visible } target={ document.getElementById('drawer') } close={ close } status={ status } />}
+          </Transition>
+        )
       }
-      <Dimmed target={ document.getElementById('dim') } active={ visible } />
+      <Dimmed target={ document.getElementById('dim') } active={ visible } close={ close } />
       <a href="/" rel="noreferrer noopener">
         <Title>VEGETOR</Title>
       </a>
@@ -62,4 +68,4 @@ const Header: React.FC<Props> = ({ authorized, userThumbnailImage }) => {
   )
 }
 
-export default Header
+export default React.memo(Header)

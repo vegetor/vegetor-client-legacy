@@ -4,8 +4,8 @@ type Props = {
 
 }
 
-const InputCheckbox: React.FC<Props> = ({ children }) => (
+const Checkbox: React.FC<Props> = ({ children }) => (
   <input type="checkbox">{ children }</input>
 )
 
-export default InputCheckbox
+export default Checkbox

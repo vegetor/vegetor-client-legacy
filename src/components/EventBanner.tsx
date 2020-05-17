@@ -43,7 +43,7 @@ const EventBanner: React.FC<Props> = ({ bgUrl, title }) => {
   return (
     <Container bgUrl={ bgUrl }>
       <Title>{ title }</Title>
-      <StyledButton primary onClick={() => history.push('/event') }>이벤트 주최하기</StyledButton>
+      <StyledButton primary onClick={() => history.push('/event/host') }>이벤트 주최하기</StyledButton>
     </Container>
   )
 }
