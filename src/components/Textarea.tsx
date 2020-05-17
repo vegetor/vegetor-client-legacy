@@ -13,10 +13,10 @@ const Container = styled.div`
 
 const Input = styled.textarea``
 
-const InputTextarea: React.FC<Props> = ({ children }) => (
+const Textarea: React.FC<Props> = ({ children }) => (
   <Container>
     <Input>{ children }</Input>
   </Container>
 )
 
-export default InputTextarea
+export default Textarea
