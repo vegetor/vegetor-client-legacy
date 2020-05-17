@@ -86,8 +86,8 @@ const Drawer: React.FC<Props> = ({ status, target, close, visible }) => {
           <ul>
             {
               routes.map(({ id, menuName, path }) => (
-                <li>
-                  <Link key={ id } to={ path } onClick={ close }>{ menuName }</Link>
+                <li key={ id }>
+                  <Link to={ path } onClick={ close }>{ menuName }</Link>
                 </li>
               ))
             }
