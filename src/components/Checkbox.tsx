@@ -1,11 +1,9 @@
 import React from 'react'
 
-type Props = {
-
-}
+type Props = {}
 
 const Checkbox: React.FC<Props> = ({ children }) => (
-  <input type="checkbox">{ children }</input>
+    <input type="checkbox">{children}</input>
 )
 
 export default Checkbox
